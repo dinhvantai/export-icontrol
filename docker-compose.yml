@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: loc_project_mysql
+    restart: always
+    image: mysql:5.7
+    volumes:
+      - .dockers/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: icontrol
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - mynet
+    ports:
+      - 3302:3306
+networks:
+  mynet:
+    driver: bridge
+volumes:
+  db-data:
